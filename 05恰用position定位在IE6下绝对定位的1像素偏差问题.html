@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+	<title>关于IE6下使用绝对定位一像素偏差问题</title>
+	<style type="text/css">
+		      body{
+		      	margin:0;
+		      }
+		      #relative{
+		      	width:299px;
+		      	height:299px;
+		      	background:red;
+		      	border:1px solid #000;
+		      	position:relative;
+		      }
+		      #absolute{
+		      	 width:100px;
+		      	 height:100px;
+		      	 background:yellow;
+		      	 position:absolute;
+		      	 bottom:-1px;
+		      	 right:-1px;
+		      }
+
+	</style>
+</head>
+<body>
+         <div id="relative">
+         	       <div id="absolute"></div>
+         </div>
+</body>
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+	<title>offset top right bottom left</title>
+	<style type="text/css">
+		     body{
+		     	margin:0;
+		     }
+		     #case{
+		     	width:100px;
+		     	height:100px;
+		     	background:blue;
+		     	padding:10px;
+		     	border:10px solid #000;
+		     	margin:10px;
+		     	position:absolute;
+		     	left:100px;
+		     	top:100px;
+		     }
+	</style>
+</head>
+<body style="height:2000px">
+        <div id="case"></div>
+        <script type="text/javascript">
+                  //alert(document.documentElement.offsetHeight);
+                  var oCase = document.getElementById("case");
+                  //alert(oCase.style.width);  //  什么都没有一空字符串，这样是获取不到宽度的，因为这种方式只针对内联样式才起作用
+                  console.log("case宽度是"+oCase.offsetWidth+"px");
+                  // 等于width100+padding(左padding10+右padding10+左border10+右border10)相当于jquery中写法是:$("#case").outerWidth();若带参数true，则margin值也会在当中，对象.width()/height();可获取元素设置的宽高，对象.innerWidth()==width+padding
+                  console.log("case的高度是"+oCase.offsetHeight+"px");// 原理同上
+                  console.log("case距离浏览器左边的距离是"+oCase.offsetLeft+"px"); // 距离浏览器左边的距离是：left+margin(左margin值10px等于110)，在jquery中是$("#case").offset().left;注意后面没有括号
+                  console.log("case距离浏览器上边的距离是"+oCase.offsetTop+"px"); // 原理同上
+                  // 由下面的例子：由此可见，是不支持offsetRight和offsetBottom的，确定一个元素的位置，由左和上就可以确定了嘛，若要是想获得也是可以获得的通过具体值的计算可得，可视区域的宽度-元素距离浏览器左边的距离，在jquery中写法：$("#case").offset().top;
+                  console.log("case距离浏览器右边的距离是"+oCase.offsetRight+"px");
+                  console.log("case距离浏览器下边边的距离是"+oCase.offsetBottom+"px");
+                  console.log("可视区域的高度是"+document.documentElement.clientHeight+"px");//在jquery中可视区域的高度,$(window).height();
+                  // 可视区域的宽度，也就是可见的高度度
+                  console.log("可视区域的宽度是"+document.documentElement.clientWidth+"px"); // 当文档没有滚动条，出现滚动条时，此时的宽度是1366，但是若页面有滚动条了，却变成了1349这是为什么呢，因为页面里浏览器的滚动条也占应了一定17像素啊，可自行截图测量一下的,在jquery中表示方法：$(window).width();
+                  console.log("整个文档的高度是"+document.body.offsetHeight+"px"); // 文档的高度 ！= 可视区域的高度，进行某些操作时，要加上滚动的高度，在jquery中相当是$(document).height()
+                  console.log("整个文档的宽度是"+document.body.offsetWidth+"px"); // 文档的宽度===可视区域的宽度,在jquery中相当是$(document).width()
+        </script>
+</body>
+</html>
